@@ -1,0 +1,8 @@
+# ignore file for git
+
+# .o .a .elf .bin .dis
+*.o
+*.a
+*.elf
+*.bin
+*.dis
