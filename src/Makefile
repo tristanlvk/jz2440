@@ -10,6 +10,7 @@ include $(TOPDIR)/Makefile.env
 # set the dependency relationship of TARGET and LIB
 test_led: jz2440_led jz2440_clock
 test_uart: jz2440_led jz2440_clock jz2440_uart
+test_mem: jz2440_led jz2440_clock jz2440_uart jz2440_mem
 
 
 

@@ -11,14 +11,16 @@
 ## === for top module =================
 TOPDIR=./../..
 
-TARGET=test_uart
+GCCLIBPATH=/usr/local/arm
 
-GCCLIBPATH=/usr/local/arm/4.3.2/lib/gcc/arm-none-linux-gnueabi/4.3.2/
+
+TARGET=test_mem
+
 LIBPATH=$(TOPDIR)/builds/lib
 BINPATH=$(TOPDIR)/builds/bin
 
 CFLAGS= -I$(TOPDIR)/include/
-LDFLAGS= -nostartfiles -static -T sdram.lds -L$(LIBPATH) -l:jz2440_led.a -l:jz2440_clock.a -l:jz2440_uart.a
+LDFLAGS= -nostdlib -T sdram.lds -L$(LIBPATH) -l:jz2440_led.a -l:jz2440_clock.a -l:jz2440_mem.a
 
 include $(TOPDIR)/Makefile.env
 
@@ -26,7 +28,7 @@ include $(TOPDIR)/Makefile.env
 $(TARGET):$(OBJS_C) $(OBJS_S)
 	$(CC) -o $@.elf $(OBJS_S) $(OBJS_C) $(LDFLAGS)
 	$(OBJCOPY) -O binary -S $@.elf $@.bin
-	$(OBJDUMP) -D $@.elf > $@.dis
+	$(OBJDUMP) -d $@.elf > $@.dis
 	cp $@.bin $(BINPATH)
 
 
