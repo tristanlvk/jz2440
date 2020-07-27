@@ -92,4 +92,33 @@ void jz2440_uart0_puts(const char *s)
         jz2440_uart0_putchar(tmp);
 }
 
+/*
+ * jz2440_uart0_gets
+ */
+char *jz2440_uart0_gets(char *s)
+{
+    int i = 0;
+    char c;
+
+    while(1) {
+        c = jz2440_uart0_getchar();     /* get one char */
+        jz2440_uart0_putchar(c);        /* echo */
+
+        /* TODO : why need this ? */
+        /*if (c == '\n')          jz2440_uart0_putchar('\r');*/
+        /*else if (c == '\r')     jz2440_uart0_putchar('\n');*/
+
+        if((c == '\n') || (c == '\r')) {
+            s[i] = '\0';
+            break;
+        } else {
+            s[i++] = c;
+        }
+    }
+
+    return s;
+}
+
+
+
 

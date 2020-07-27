@@ -6,6 +6,7 @@
 #define  __S3C2440_REG_HHHHHHHH
 
 #define     __REG(x)                (*(volatile unsigned int *)(x))
+#define     __REG_BYTE(x)           (*(volatile unsigned char *)(x))
 
 /*Memory Controllers*/
 #define     BWSCON                   __REG(0x48000000)   //Bus width & wait status control
@@ -127,9 +128,9 @@
 
 #define     NFCONF                   __REG(0x4E000000)  //NAND flash configuration
 #define     NFCONT                   __REG(0x4E000004)  //NAND flash control
-#define     NFCMD                    __REG(0x4E000008)  //NAND flash command
-#define     NFADDR                   __REG(0x4E00000C)  //NAND flash address
-#define     NFDATA                   __REG(0x4E000010)  //NAND flash data
+#define     NFCMD                    __REG_BYTE(0x4E000008)  //NAND flash command
+#define     NFADDR                   __REG_BYTE(0x4E00000C)  //NAND flash address
+#define     NFDATA                   __REG_BYTE(0x4E000010)  //NAND flash data
 #define     NFMECC0                  __REG(0x4E000014)  //NAND flash main area ECC0/1
 #define     NFMECC1                  __REG(0x4E000018)  //NAND flash main area ECC2/3
 #define     NFSECC                   __REG(0x4E00001C)  //NAND flash spare area ECC

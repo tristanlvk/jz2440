@@ -63,8 +63,7 @@ jz2440_clock_init:
 
 
     /* return */
-    bx lr
-
+    MOV pc, lr
 
 
 

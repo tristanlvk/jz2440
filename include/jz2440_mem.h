@@ -5,4 +5,5 @@ extern void jz2440_sdram_init();
 extern int jz2440_sdram_test();
 
 
+
 #endif

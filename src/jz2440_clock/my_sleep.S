@@ -20,7 +20,7 @@ s_loop:
     ldr r2, =400000/9
     mov r3, #0
 
-    /* one loop costs 9*clocks in ARM9 */
+    /* one loop costs 5*clocks in ARM9 */
 ms_loop:
     add r3, r3, #1
     cmp r3, r2
@@ -32,7 +32,7 @@ ms_loop:
 
 end_loop:
     /* return */
-    bx lr
+    mov pc, lr
 
 
 
