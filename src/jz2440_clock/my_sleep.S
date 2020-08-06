@@ -16,11 +16,12 @@ my_sleep:
     beq end_loop
 
 s_loop:
-    /* init ms counter : 400*1000 @400MHz */
-    ldr r2, =400000/9
+    /* init ms counter : 100*1000 @100MHz-HCLK */
+    /* one loop costs 5*PIPE in ARM9 */
+    /* one PIPE means one read to internal SRAM, it costs 8 clk */
+    ldr r2, =(100000/40)
     mov r3, #0
 
-    /* one loop costs 5*clocks in ARM9 */
 ms_loop:
     add r3, r3, #1
     cmp r3, r2

@@ -28,6 +28,7 @@ jz2440_clock_init:
     ldr r1, =0x00000004
     str r1, [r0]
 
+
     /* CLKDVIN : set div of FCLK:HCLK:PCLK = 1:4:8 */
     ldr r0, =0x4C000014
     ldr r1, =0x00000005
@@ -61,9 +62,8 @@ jz2440_clock_init:
     ldr r1, =0x0005C011
     str r1, [r0]
 
-
     /* return */
-    MOV pc, lr
+    mov pc, lr
 
 
 
