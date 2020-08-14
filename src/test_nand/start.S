@@ -5,8 +5,6 @@
  /* external function */
 .extern jz2440_clock_init
 .extern jz2440_sdram_init
-.extern jz2440_copy2sdram
-.extern jz2440_clean_bss
 .extern main
 
 
@@ -33,20 +31,13 @@ _start:
     ldr r2, [r1]    /* r2 = [0] */
     cmp r1, r2
     ldr sp, =0x40000000+4096    /* for NOR */
-    moveq sp, #4096             /* for nand */
+    /*moveq sp, #4096*/             /* for nand */
+    ldr sp, =0x30010000         /* put stack on sdram, since 4K sram is not enough */
     streq r0, [r1]  /* restore the value */
 
-    bl jz2440_sdram_init        /* init sdram */
-    bl jz2440_nand_init         /* init nand */
+    bl jz2440_sdram_init
 
-    bl jz2440_copy2sdram_nand   /* copy text/data/rodata to sdram */
-    bl jz2440_clean_bss         /* clean bss data */
-
-    /* reset the SP pointer to SDRAM top */
-    ldr sp, =0x34000000         /* SDRAM is 64M */
-
-    ldr lr, =halt
-    ldr pc, =main   /* absolute jump */
+    bl main
 
 halt:
     b halt

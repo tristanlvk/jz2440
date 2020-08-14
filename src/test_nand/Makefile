@@ -11,7 +11,7 @@
 ## === for top module =================
 TOPDIR=./../..
 
-TARGET=test_mem
+TARGET=test_nand
 
 GCCLIBPATH=/usr/local/arm/4.3.2/lib/gcc/arm-none-linux-gnueabi/4.3.2/
 LIBPATH=$(TOPDIR)/builds/lib
@@ -24,7 +24,7 @@ include $(TOPDIR)/Makefile.env
 
 # for toplevel
 $(TARGET):$(OBJS_C) $(OBJS_S)
-	$(CC) -o $@.elf $(OBJS_S) $(OBJS_C) $(LDFLAGS)
+	$(CC) -o $@.elf $(OBJS_S) $(OBJS_C) $(LDFLAGS) $(CFLAGS_LINK)
 	$(OBJCOPY) -O binary -S $@.elf $@.bin
 	$(OBJDUMP) -D $@.elf > $@.dis
 	cp $@.bin $(BINPATH)

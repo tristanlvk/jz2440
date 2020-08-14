@@ -129,7 +129,6 @@ int my_printf_test(void)
     printf("num=0x%8x\n\r",  0x12345);
     printf("num=0x%02x\n\r", 0x1);
     printf("num=0x%2x\n\r",  0x1);
-
     printf("num=%05d\n\r", 0x1);
     printf("num=%5d\n\r",  0x1);
 

@@ -52,12 +52,13 @@ int jz2440_sdram_test(void)
     int i;
 
     /* write sdram */
-    for (i = 0; i < 1000; i++)
+    for (i = 0; i < 1000; i++) {
         p[i] = (unsigned char)(i & 0xFF);
+    }
 
     /* read sdram and check */
     for (i =0; i < 1000; i++) {
-        if (p[i] != (unsigned char)(i & 0xFF))
+        if (p[i] != (i & 0xFF))
             return -1;
     }
 

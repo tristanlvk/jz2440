@@ -1,4 +1,9 @@
 ## === for top level =================
+
+export G_DEBUG=TRUE
+export G_STRIP_FUNC=
+
+
 TOPDIR=.
 
 EXCLUDE_DIRS= include builds

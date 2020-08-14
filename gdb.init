@@ -1,0 +1,10 @@
+target remote localhost:3333
+monitor halt
+monitor s_init
+load
+b _start
+continue
+
+
+
+

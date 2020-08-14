@@ -20,13 +20,12 @@ _start:
     bl jz2440_clock_init
 
     /* set the SP pointer */
-    /* TODO : not prefect */
     /* to see if it's boot from NOR or NAND
-     * first readout the value of address 0,
-     * then to see if could change it successfully
+     * write #0 to the address 0 to see if it could be written
+     * since the #0 is not the valid opCode, for NOR, address 0 data is not #0
      */
     mov r1, #0
-    ldr r0, [r1]    /* read out the now value */
+    ldr r0, [r1]    /* store the original value to R0 */
     str r1, [r1]    /* 0 -> [0] */
     ldr r2, [r1]    /* r2 = [0] */
     cmp r1, r2

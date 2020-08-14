@@ -5,14 +5,15 @@ jz2440 dev-board project
 
 
 ## working step
-1. clock
+1. clock                                --> done
 --------> clock works
 
-2. mem
---------> relocation link scripts done
+2. uart                                 --> done
+--------> printf
 
-3. uart
---------> printf done
+3. mem
+--------> relocation link scripts
+--------> mem test                      --> done
 
 4. exceptions
 --------> exception examples

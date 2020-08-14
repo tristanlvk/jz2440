@@ -4,6 +4,7 @@
 
  /* external function */
 .extern jz2440_clock_init
+.extern jz2440_uart0_init
 .extern jz2440_sdram_init
 .extern jz2440_copy2sdram
 .extern jz2440_clean_bss
@@ -36,16 +37,14 @@ _start:
     moveq sp, #4096             /* for nand */
     streq r0, [r1]  /* restore the value */
 
+    bl jz2440_uart0_init        /* init uart */
     bl jz2440_sdram_init        /* init sdram */
     bl jz2440_nand_init         /* init nand */
 
     bl jz2440_copy2sdram_nand   /* copy text/data/rodata to sdram */
+
     bl jz2440_clean_bss         /* clean bss data */
 
-    /* reset the SP pointer to SDRAM top */
-    ldr sp, =0x34000000         /* SDRAM is 64M */
-
-    ldr lr, =halt
     ldr pc, =main   /* absolute jump */
 
 halt:

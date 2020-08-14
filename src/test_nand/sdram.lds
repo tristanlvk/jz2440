@@ -1,6 +1,6 @@
 SECTIONS
 {
-    . = 0x30000000;
+    . = 0x00000000;
 
     __code_start = .;
 
@@ -8,19 +8,19 @@ SECTIONS
     .text :
     {
         start.o(.text)
-        *(.text)
+        *(.text*)
     }
 
     . = ALIGN(4);
     .rodata :
     {
-        *(.rodata)
+        *(.rodata*)
     }
 
     . = ALIGN(4);
     .data :
     {
-        *(.data)
+        *(.data*)
     }
 
     . = ALIGN(4);
